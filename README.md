@@ -53,13 +53,18 @@ var data = {
   goods: [...],
   attr: [...]
 };
-
-var db = wu.db(data);
-var table = db.table('goods'); // 如果不存在会自动创建
-var obj = table.get({id:10});
-var obj = db.goods.get(10);
 ```
 ```javascript
-wu.db(data).goods.where('id>10').select();
+var db = wu.db(data);
+```
+```javascript
+var table = db.table('goods'); // 如果不存在会自动创建
+var obj = table.get({id:10});
+```
+```javascript
+var obj = db.goods.get({name:'xxx'});
+```
+```javascript
 wu.db(data).table('goods').where('id>10').select();
+wu.db(data).goods.where('id>10').select();
 ```

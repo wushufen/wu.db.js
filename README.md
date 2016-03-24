@@ -2,7 +2,12 @@
 对集合进行 crud 操作的插件
 ## Usage 使用方法
 
-### .table()
+### wu.db.table()
+以一个数组为参数，返回一个Table类型的数组。
+插件没有直接对Array进行扩展，而是创建了一个内部类Table，
+Table类本身继承于数组，
+所以它也是一个数组，拥有数组的所有方法并增加一些便捷的方法。
+Table类型与关系型数据库的表有对应的关系。
 ```javascript
 var userList = [...];
 var table = wu.db.table(userList)

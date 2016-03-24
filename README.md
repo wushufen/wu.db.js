@@ -43,7 +43,7 @@ table.where({id:10}).set({age:20})
 
 ### .save()
 ```javascript
-table.save({id:10, age:25}) // 默认主键为id。若存在10等于10则更新，不存在则添加
+table.save({id:10, age:25}) // 默认主键为id。若存在id等于10则更新，不存在则添加
 table.save({pk:110, name:'new name'}, 'pk') // 指定主键
 ```
 

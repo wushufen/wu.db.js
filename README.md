@@ -18,8 +18,8 @@ table.where({id:10}).get()
 
 ### .select()
 ```javascript
-table.select('id>10 && age<18') // [{..}, ...]
-table.where('id>10 && age<18').select()
+table.where('id>10 && age<18').select() // 返回一个数组 [{..}, ...]
+table.select('id>10 && age<18')
 ```
 ```javascript
 table.select() // 返回所有 [{..}, ...]
@@ -27,9 +27,9 @@ table.select() // 返回所有 [{..}, ...]
 
 ### .get()
 ```javascript
-table.get('id==10') // {..}
+table.where({id:10}).get() // 返回一个对象 {..}
+table.get('id==10')
 table.get({id:10})
-table.where({id:10}).get()
 table.get(10) // id字段可以直接这样写
 ```
 ```javascript
@@ -45,6 +45,33 @@ table.where({id:10}).set({age:20})
 ```javascript
 table.save({id:10, age:25}) // 默认主键为id。若存在id等于10则更新，不存在则添加
 table.save({pk:110, name:'new name'}, 'pk') // 指定主键
+```
+
+### .delete()
+```javascript
+table.where({id:10}).delete()
+table.delete({id:10})
+table.delete(10) // id字段。不是数组下标
+```
+
+### .each()
+```javascript
+table.each(function(item, index){
+	console.log(this.id)
+})
+```
+```javascript
+table.where('id>10').each(function(item, index){
+	console.log(this.id)
+})
+```
+
+### .toArray()
+```javascript
+// Table 类本身继承于数组，
+// 所以它也是一个数组，拥有数组的所有方法并增加以上的方法。
+// toArray 可以返回一个原始类型的数组
+table.toArray()
 ```
 
 ### wu.db().table()
